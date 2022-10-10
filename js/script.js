@@ -27,10 +27,21 @@ const movieDB = {
 const advert_block = document.getElementsByClassName('promo__adv');
 const movie_ganer = document.getElementsByClassName('promo__genre');
 const change_image = document. getElementsByClassName('promo__bg');
-console.log(advert_block);
+const movie_list = document.querySelector('.promo__interactive-list');
+
 advert_block[0].remove();
-console.log(movie_ganer);
-// movie_ganer.textContent = 'Replacement text';
+
 movie_ganer[0].innerHTML = "драма";
-console.dir(change_image);
-change_image[0].style.backgroundImage = URL('img/bg.jpg');
+
+// change_image[0].style.backgroundImage = URL('img/bg.jpg');
+
+movie_list.innerHTML = "";
+
+movieDB.movies.sort();
+
+ movieDB.movies.forEach((film, i) => {
+     movie_list.innerHTML += ` 
+     <li class="promo__interactive-item">${i+1} ${film}
+     <div class="delete"></div>
+ </li>`;
+});
